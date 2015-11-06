@@ -1,5 +1,5 @@
 //you can also just require('amqprpc')(); if your broker is local
-var amqprpc = require('amqprpc')( { AMQP_URL: 'amqp://localhost' });
+var amqprpc = require('rabbitrpc')( { AMQP_URL: 'amqp://localhost' });
 amqprpc.consumer
 .connect() //this create your channels and setup the amqp connexion
 .then(function(){
