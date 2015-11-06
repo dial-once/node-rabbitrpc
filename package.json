@@ -1,0 +1,28 @@
+{
+  "name": "amqprpc",
+  "version": "1.0.0",
+  "description": "Some modules to require to create producers / consumers using AMQP-RPC",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dial-once/node-amqprpc.git"
+  },
+  "author": "Dial Once",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/dial-once/node-amqprpc/issues"
+  },
+  "homepage": "https://github.com/dial-once/node-amqprpc#readme",
+  "dependencies": {
+    "amqplib": "^0.4.0",
+    "node-uuid": "^1.4.3",
+    "when": "^3.7.4",
+    "winston": "^2.1.0"
+  }
+}
