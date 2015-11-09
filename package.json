@@ -1,6 +1,6 @@
 {
   "name": "rabbitrpc",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Some modules to require to create producers / consumers using AMQP-RPC",
   "main": "index.js",
   "directories": {
