@@ -1,5 +1,5 @@
-var rabbitrpc = require('../index')( { AMQP_URL: 'amqp://localhost' }),
-  http = require('http');
+var rabbitrpc = require('../index')({ AMQP_URL: 'amqp://localhost' });
+var http = require('http');
 
 var startDate;
 var tick = 0;
@@ -9,22 +9,22 @@ rabbitrpc.consumer
 .connect()
 .then(function() {
   for (var i = 0; i < 4; i++) {
-    (function(index){
+    (function(index) {
       rabbitrpc.consumer.createQueue('queue:name:' + index, function(msg) {
         receivedTotal++;
         rabbitrpc.producer.send('queue:name:' + index, {message: 'A random message sent in the queue!'});
       });
-    })(i)
+    })(i);
   }
 
-  for(var i = 0; i < 4; i++) {
-    console.log('Sending init message', i);
-    rabbitrpc.producer.send('queue:name:' + i, {message: 'A random message sent in the queue!'});
+  for (var j = 0; j < 4; j++) {
+    console.log('Sending init message', j);
+    rabbitrpc.producer.send('queue:name:' + j, {message: 'A random message sent in the queue!'});
   }
 
   startDate = new Date();
 
-  setInterval(function(){
+  setInterval(function() {
     console.log('Running for:', (new Date() - startDate) / 1000, 'secs. Current tick:', tick);
     console.log('Current bitrate (this tick):', receivedTotal / 10, '/sec.');
     console.log('Memory usage:', process.memoryUsage().rss / 1000, 'kb');
@@ -33,12 +33,12 @@ rabbitrpc.consumer
   }, 10000);
 });
 
-var gracefulShutdown = function () {
+var server = http.createServer().listen(process.env.PORT || 3000);
+
+var gracefulShutdown = function() {
   server.close();
   process.exit();
 };
 
 process.on('SIGTERM', gracefulShutdown);
 process.on('SIGINT', gracefulShutdown);
-
-var server = http.createServer().listen(process.env.PORT || 3000);
