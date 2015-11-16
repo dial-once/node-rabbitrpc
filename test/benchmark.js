@@ -10,7 +10,7 @@ rabbitrpc.consumer
 .then(function() {
   for (var i = 0; i < 4; i++) {
     (function(index) {
-      rabbitrpc.consumer.createQueue('queue:name:' + index, function(msg) {
+      rabbitrpc.consumer.createQueue('queue:name:' + index, function() {
         receivedTotal++;
         rabbitrpc.producer.send('queue:name:' + index, {message: 'A random message sent in the queue!'});
       });
