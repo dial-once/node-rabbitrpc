@@ -1,4 +1,7 @@
 # node-rabbitrpc
+
+Deprecated module. Use BunnyMQ instead! https://github.com/dial-once/node-bunnymq (Regular/RPC support out of the box)
+
 Some modules to require to create producers / consumers using AMQP-RPC
 
 # features
